@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Panupat K.</title>
+
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="vendor/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="css/app.min.css">
+
+    <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,900|Sarabun" rel="stylesheet">
+
+    <script src="vendor/vuejs/js/vue.min.js"></script>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#00b1ff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#00b1ff">
+</head>
+<body>    
+    <div id="app"
+         v-bind:class="[
+            { 'is-page-ready': state.page_ready },
+            'is-' + state.page_current + '-page'
+        ]">
+        
+        <!-- header -->
+        <div id="header" class="header">
+
+            <nav id="navigation" class="navigation hidden">
+                <div class="wrapper">
+                    <ul>
+                        <li v-bind:class="{ 'is-active': state.page_current == 'home' }"       v-on:click="goToPage('home')"><span>Home</span></li>
+                        <li v-bind:class="{ 'is-active': state.page_current == 'portfolios' }" v-on:click="goToPage('portfolios')"><span>Portfolios</span></li>
+                        <li v-bind:class="{ 'is-active': state.page_current == 'about' }"      v-on:click="goToPage('about')"><span>About</span></li>
+                        <li v-bind:class="{ 'is-active': state.page_current == 'contact' }"    v-on:click="goToPage('contact')"><span>Contact</span></li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <!-- #hamburger -->
+            <div id="hamburger" class="hamburger hamburger--elastic" v-on:click="toggleNavigation" v-bind:class="{ 'is-active': state.navigation_is_open }">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </div>
+            <!-- end #hamburger -->
+
+            <!-- .navigation-page-current -->
+            <div class="navigation-page-current" v-bind:class="{ 'is-show': navigation_page_current !== '' }">
+                <span id="navigation_page_current" class="button-navigation-page-current">{{ navigation_page_current }}</span>
+            </div>
+            <!-- end .navigation-page-current -->
+
+            <!-- .navigation-page-portfolio -->
+            <div class="navigation-page-portfolio">
+                <div class="wrapper">
+                    <button type="button" class="button-navigation-page-portfolio" v-bind:class="{ 'is-active': state.page_current == 'portfolios' }" v-on:click="goToPage('portfolios')">Portfolios</button>
+                </div>
+            </div>
+            <!-- end .navigation-page-portfolio -->
+            
+        </div>
+        <!-- end header -->      
+        
+        <!-- .morph-elements -->
+        <div class="morph-elements">
+        
+            <svg id="morph" x="0px" y="0px" width="1489.094px" height="571.784px" viewBox="0 0 1489.094 571.784" preserveAspectRatio="xMaxYMin meet">
+                <filter height="574.375" width="1578" id="morph_front_filter" filterUnits="userSpaceOnUse" y="0" x="0">
+                    <feOffset input="SourceAlpha"></feOffset>
+                    <feGaussianBlur result="blur" stdDeviation="15"></feGaussianBlur>
+                    <feFlood flood-opacity="0.502" flood-color="#007cb2"></feFlood>
+                    <feComposite in2="blur" operator="in"></feComposite>
+                    <feComposite in="SourceGraphic" operator="over"></feComposite>
+                </filter>
+                <g>
+                    <defs>
+                        <rect id="morph_front_rect" y="0" width="1489.094" height="571.784" />
+                    </defs>
+                    <clipPath id="morph_front_clippath">
+                        <use xlink:href="#morph_front_rect" overflow="visible" />
+                    </clipPath>
+                    <path id="morph_front_green_1" fill="#71F6D7" clip-path="url(#morph_front_clippath)" d="M93.002-710.889v354.035v99.01V0.754
+            	c17.256,9.182,192.237,99.774,398.718,110.719c110.635,6.166,213.746,5.229,317.152,50.311
+            	c55.939,24.388,79.609,79.21,116.922,122.429s91.251,77.612,145.76,95.128c62.008,19.923,127.88,9.208,191.477,17.993
+            	c55.427,7.66,109.249,29.584,148.367,70.091c11.292,11.691,21.204,24.603,30.891,37.606c9.12,12.24,46.805,66.753,46.805,66.753
+            	h52.852h153.015h435.044v-829.627v-99.01v-354.035H93.002z" />
+            
+                    <path id="morph_front_green_2" display="none" d="M93.002-710.889v354.035v99.01V0c4.393,5.858,16.934,29.943,43.666,40.995
+            	c63.046,26.064,106.18-0.762,157.031,5.983c69.457,9.213,138.454,73.513,196.374,94.999c58.257,21.61,197.309,34.364,274.87,20.722
+            	c154.685-27.208,198.678,112.376,226.794,166.249c38.829,74.401,152.885,90.328,231.349,83.281
+            	c27.795-2.496,54.533-9.601,81.96-14.139c0.001,0,150.428-24.881,183.824,173.696h0.223V0h0v571.784h52.852h153.015h435.044
+            	v-829.627v-99.01v-354.035H93.002z" />
+            
+                    <g transform="matrix(1, 0, 0, 1, 0, 0)" clip-path="url(#morph_front_clippath)" filter="url(#morph_front_filter)">
+                        <linearGradient id="morph_front_blue_gradient" gradientUnits="userSpaceOnUse" x1="431.9952" y1="968.8801"
+                            x2="431.7964" y2="967.4205" gradientTransform="matrix(577.0939 0 0 -187.8557 -248463.375 182065.7188)">
+                            <stop offset="0" style="stop-color:#3DC4FF" />
+                            <stop offset="1" style="stop-color:#8BDCFF" />
+                        </linearGradient>
+                        <path id="morph_front_blue_1" fill="url(#morph_front_blue_gradient)" d="M36.838,0c1.019,0.627,27.807,15.192,40.598,21.826c71.511,37.088,144.633,53.684,231.48,57.364
+            	c127.659,5.408,275.987-5.501,395.299,34.026c64.546,21.388,91.857,69.458,134.91,107.359
+            	c43.052,37.898,105.29,68.059,168.19,83.417c71.549,17.469,147.552,8.073,220.936,15.778
+            	c63.954,6.717,126.681,25.163,171.192,61.463c34.937,28.492,89.651,91.508,89.651,91.508h475.894V225.205v-578.691h-392.892h-83.002
+            	H65.798h-28.96V0z" />
+            
+                        <path id="morph_front_blue_2" display="none" d="M36.838,0c1.019,0.627,30.545,26.23,56.209,42.392
+            	c68.165,42.928,133.743,48.39,220.667,48c138.653-0.623,239.8-34.488,362.667-8c86.586,18.667,116.947,123.432,160,161.333
+            	c43.052,37.898,104.433,63.309,167.333,78.667c71.549,17.469,167.283-24.372,240.667-16.667c63.954,6.717,120.444,35.686,166,70.667
+            	c37.333,28.667,78.714,96.349,78.714,96.349h475.894V0v-176.743v-39.096v-137.647H281.82H36.838V0z" />
+                    </g>
+                </g>
+            </svg>
+        
+        </div>
+        <!-- end .morph-elements -->
+
+        <!-- content -->
+        <div id="content" class="content">
+            
+            <!-- #main_container -->
+            <div id="main_container" class="swiper-container full-page">
+                <div class="swiper-wrapper main-container-swiper-wrapper">
+
+                    <div class="swiper-slide">
+
+                        <div class="front-page full-page">
+
+                            <div class="wrapper">
+                                <h1 class="name">
+                                    <span>P</span>
+                                    <span>A</span>
+                                    <span>N</span>
+                                    <span>U</span>
+                                    <span>P</span>
+                                    <span>A</span>
+                                    <span>T&nbsp;</span>
+                                    <span>K</span>
+                                    <span>.</span>
+                                </h1>
+                                <h2 class="position">Full Stack Web Developer</h2>
+                            </div>
+
+                            <!-- .scroll-down -->
+                            <div class="scroll-down">
+
+                                <!-- SVG -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104 104" v-on:click="goToPage('portfolios')">
+                                    <g id="svg_scroll_down">
+                                        <g transform="translate(36 28)">
+                                            <path fill="#666666" d="M16,0A16.014,16.014,0,0,0,0,15.992V32.008a16,16,0,0,0,32,0V15.992A16.014,16.014,0,0,0,16,0ZM30.222,32.008a14.222,14.222,0,0,1-28.445,0V15.992a14.222,14.222,0,0,1,28.445,0Zm0,0" />
+                                            <path fill="#666666" d="M53.887,18.7a.9.9,0,0,0-.895.895V27.7a.9.9,0,0,0,1.79,0V19.6a.9.9,0,0,0-.9-.895Zm0,0" transform="translate(-37.888 -13.333)">
+                                                <animateTransform id="mouse_hover" attributeName="transform" type="translate" dur="1.5s" values="-37.888 -13.333; -37.888 -1.333; -37.888 -13.333; -37.888 -13.333" keyTimes="0; 0.2; 0.5; 1" repeatCount="indefinite" fill="freeze"></animateTransform>
+                                            </path>
+                                        </g>
+                                        <g transform="translate(52 52)">
+                                            <g transform="scale(0.9)" stroke="#cccccc" stroke-dasharray="7">
+                                                <circle cx="0" cy="0" r="51.5" fill="#ffffff" fill-opacity="0">
+                                                    <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" begin="0s" repeatCount="indefinite" fill="freeze"></animateTransform>
+                                                </circle>
+                                                <animateTransform id="radius_hover" attributeName="transform" type="scale" dur="1.5s" values="0.9; 0.8; 1; 0.9" keyTimes="0; 0.2; 0.8; 1" begin="svg_scroll_down.mouseover" end="svg_scroll_down.mouseout" repeatCount="indefinite" fill="freeze"></animateTransform>
+                                                <animateTransform attributeName="transform" type="scale" dur="0.5s" to="0.9" begin="radius_hover.endEvent" repeatCount="1" fill="freeze"></animateTransform>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <!-- end SVG -->
+                                <span class="text">Scroll Down</span>
+
+                            </div>
+                            <!-- end .scroll-down -->
+
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-slide">
+
+                        <div class="portfolio-list-page full-page">
+
+                            <div id="portfolio_lists" class="portfolio-lists swiper-container">                                
+                                <div class="swiper-wrapper">                                    
+
+                                    <div class="swiper-slide portfolio-list" v-for="portfolio in portfolios">
+                                        <h2 v-on:click="goToPage('portfolio', portfolio)">{{ portfolio.name }}</h2>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- arrow -->
+                            <img src="img/arrow-up.svg" alt="Up" id="portfolio_list_arrow_up" class="portfolio-list-arrow-up disabled">
+                            <img src="img/arrow-down.svg" alt="Down" id="portfolio_list_arrow_down" class="portfolio-list-arrow-down">
+                            <!-- end arrow -->
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- end #main_container -->
+
+            <!-- #portfolio_container -->
+            <div id="portfolio_container" class="portfolio-container container hidden">
+
+                <!-- .close-button -->
+                <div class="close-button" title="Close" v-on:click="goToPage('portfolios')">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        width="609.333px" height="609.333px" viewBox="0 0 609.333 609.333" enable-background="new 0 0 609.333 609.333"
+                        xml:space="preserve">
+                        <circle class="close-button-bg" fill="#FFFFFF" cx="306" cy="304.667" r="304.667" />
+                        <path class="close-button-icon" fill="#888" d="M409.599,384.431l-95.526-85.041l95.526-85.161c2.67-2.252,3.01-6.241,0.758-8.911
+                        c-0.23-0.274-0.484-0.528-0.758-0.758c-3.122-2.666-7.72-2.666-10.842,0l-94.09,83.88l-94.09-83.88
+                        c-3.122-2.666-7.72-2.666-10.842,0c-0.274,0.23-0.528,0.484-0.758,0.758c-2.252,2.67-1.912,6.659,0.758,8.911l95.526,85.161
+                        l-95.526,85.041c-0.274,0.23-0.528,0.484-0.758,0.758c-2.252,2.67-1.912,6.659,0.758,8.911c3.154,2.674,7.809,2.572,10.842-0.238
+                        l94.09-83.88l94.09,83.88c3.034,2.81,7.688,2.912,10.842,0.238c2.67-2.252,3.01-6.241,0.758-8.911
+                        C410.126,384.915,409.873,384.661,409.599,384.431z" />
+                    </svg>                    
+                </div>
+                <!-- end .close-button -->
+
+                <!-- .portfolio-details -->
+                <div class="portfolio-details">
+                    <h2 class="title">{{ current_portfolio.name }}</h2>
+                    <ul class="categorise">
+                        <li v-for="category in current_portfolio.categories">{{ category.name }}</li>
+                    </ul>
+                    <div class="description">
+                        <p v-if="current_portfolio.description">{{ current_portfolio.description }}</p>                        
+                        <div class="wrapper">
+                            <p v-if="current_portfolio.client"><b class="label">Client: </b> {{ current_portfolio.client }}</p>
+                            <p v-if="current_portfolio.demos.length > 0">
+                                <b class="label">Demo: </b>
+                                <span v-for="(demo, index) in current_portfolio.demos">
+                                    <span v-if="index > 0">, </span>
+                                    <a v-bind:href="demo.url" v-bind:title="demo.url" target="_blank">Link{{ current_portfolio.demos.length > 1 ? ' '+(index+1) : '' }}</a>
+                                </span>
+                            </p>
+                            <p v-if="current_portfolio.app_stores.app_store">
+                                <b class="label">App store: </b>
+                                <a v-bind:href="current_portfolio.app_stores.app_store" v-bind:title="current_portfolio.app_stores.app_store" target="_blank">Link</a>
+                            </p>
+                            <p v-if="current_portfolio.app_stores.play_store">
+                                <b class="label">Play store: </b>
+                                <a v-bind:href="current_portfolio.app_stores.play_store" v-bind:title="current_portfolio.app_stores.play_store" target="_blank">Link</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end .portfolio-details -->
+
+                <!-- #portfolio_slide -->
+                <div id="portfolio_slide" class="swiper-container portfolio-slide">
+                    <div class="swiper-wrapper"></div>
+                </div>
+                <!-- end #portfolio_slide -->
+
+            </div>
+            <!-- end #portfolio_container -->
+
+            <!-- #about_container -->
+            <div id="about_container" class="about-container container hidden">
+            
+                <!-- .about-inner -->
+                <div class="about-inner">
+                    <h2 class="title">Panupat Kammahawong</h2>
+                    <img src="img/panupat-image.jpg" alt="Panupat Kammahawong" class="image">
+                    <!-- .about-inner-wrapper -->
+                    <div class="about-inner-wrapper">
+                        <div class="overview">
+                            <p>I have experience about web development for 4 year. My main abilities is HTML, CSS/SCSS, Javascript, jQuery in front-end position and I can do backend position too with Wordpress, Ruby on Rails, Laravel. Other abilities related to web development are SEO(website structure), Progressive Web App, basic UI and Git for work with other developer.</p>
+                        </div>
+
+                        <!-- .column-row -->
+                        <div class="column-row">
+                            <!-- .column-left -->
+                            <div class="column-left">
+                                <h3 class="content-title">Skills</h3>
+                                <ul class="skill-lists">
+                                    <li v-for="skill in skills">
+                                        <div class="skill-image">
+                                            <img v-bind:src="skill.image" v-bind:alt="skill.name">
+                                        </div>
+                                        <p class="skill-name">{{ skill.name }}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- end .column-left -->
+
+                            <!-- .column-right -->
+                            <div class="column-right">
+
+                                <h3 class="content-title">Education</h3>
+                                <div class="box-shadow">
+                                    <h4 class="content-subtitle color-blue">2012 – 2015</h4>
+                                    <br>
+                                    <h4 class="content-subtitle">Faculty of Information and Communication Technology</h4>                                
+                                    <br>
+                                    <p>Bachelor of Sciences - Degree in Information Technology for Design (Web & Interactive)</p>
+                                    <p>Silpakorn University, Bangkok Thailand</p>
+                                </div>
+
+                                <br>
+                                <br>
+
+                                <h3 class="content-title">Work Experience</h3>
+                                <div class="box-shadow">
+                                    <h4 class="content-subtitle color-blue">Nov 2015 - Present</h4>
+                                    <br>
+                                    <h4 class="content-subtitle">Web Developer<br>at Backtobasics Design Co., Ltd.</h4>
+                                    <br>
+                                    <p>- Developed own platforms as startup with Ruby on Rails</p>
+                                    <p>- Laravel at position View and Controller</p>
+                                    <p>- Front-end</p>
+                                    <p>- Back-end with Wordpress</p>
+                                    <p>- Improve and maintenance MyCloudFullfilment platform</p>
+                                </div>
+
+                            </div>
+                            <!-- end .column-right -->
+                        </div>
+                        <!-- end .column-row -->
+
+                    </div>
+                    <!-- end .about-inner-wrapper -->
+                    
+                </div>
+                <!-- end .about-inner -->
+            
+            </div>
+            <!-- end #about_container -->
+
+            <!-- #contact_container -->
+            <div id="contact_container" class="contact-container container hidden">
+            
+                <!-- .contact-inner -->
+                <div class="contact-inner">
+                    <h2 class="title">Please feel free to contact me</h2>
+                    <div class="contact-inner-wrapper">
+                        <!-- .column-row -->
+                        <div class="column-row">
+
+                            <!-- .contact-form -->
+                            <form action="https://pogaam.com/wp-content/themes/pogaam-light/inc/panupat-mail.php" method="POST" class="contact-form">
+                                <div class="input">                                
+                                    <input type="text" id="name" name="name" required>
+                                    <label for="name">Your full name</label>
+                                    <span class="input-underline"></span>
+                                </div>
+                                <div class="input">
+                                    <input type="email" id="email" name="email" required>
+                                    <label for="email">Your Email</label>
+                                    <span class="input-underline"></span>
+                                </div>
+                                <div class="input">
+                                    <input type="text" id="subject" name="subject" required>
+                                    <label for="subject">Subject</label>
+                                    <span class="input-underline"></span>
+                                </div>
+                                <div class="input">
+                                    <textarea id="message" name="message" rows="5"></textarea>
+                                    <label for="message">Message</label>
+                                    <span class="input-underline"></span>
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" class="button-blue uppercase">Send</button>
+                                </div>
+                            </form>
+                            <!-- end .contact-form -->
+
+                            <!-- .social-lists -->
+                            <ul class="social-lists">
+                                <li>
+                                    <a href="https://www.facebook.com/medunla" target="_blank" title="facebook.com/medunla">
+                                        <img src="img/social/facebook.svg" alt="facebook">
+                                        <span>facebook.com/medunla</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/panupat-kammahawong-820551115/" target="_blank" title="linkedin.com/in/panupat-kammahawong">
+                                        <img src="img/social/linkedin.svg" alt="linkedin">
+                                        <span>linkedin.com/in/panupat-kammahawong</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/medunla" target="_blank" title="github.com/medunla">
+                                        <img src="img/social/github.svg" alt="github">
+                                        <span>github.com/medunla</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="tel: +66858399063" target="_blank" title="+66 (0) 85 839 9063">
+                                        <img src="img/social/phone.svg" alt="phone">
+                                        <span>+66 (0) 85 839 9063</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- end .social-lists -->
+
+                        </div>
+                        <!-- end .column-row -->
+                    </div>
+                    
+                </div>
+                <!-- end .contact-inner -->
+            
+            </div>
+            <!-- end #contact_container -->
+
+        </div>
+        <!-- end content -->
+
+        <!-- #loading_container -->
+        <div id="loading_container" class="loading-container">
+            <img src="img/loading.svg" alt="Loading">
+        </div>
+        <!-- end #loading_container -->
+
+    </div>
+
+    <!-- script -->
+    <script src="vendor/swiper/js/swiper.min.js"></script>
+    <script src="vendor/snap.svg/js/snap.svg-min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
